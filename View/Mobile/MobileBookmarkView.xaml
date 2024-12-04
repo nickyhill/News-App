@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CyberNewsApp.ViewModel"
+             x:Class="CyberNewsApp.View.Mobile.MobileBookmarkView"
+             Title="Bookmarks">
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label IsVisible="{Binding Loading}"
+               FontAttributes="Bold"
+               FontSize="Header"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Margin="100,0,0,0"
+               >Loading Bookmarked News...</Label>
+
+            <Label IsVisible="{Binding Empty}"
+                TextColor="#512BD4"
+                FontAttributes="Bold"
+                FontSize="Header"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Margin="0,50,0,50">There are no bookmarked articles</Label>
+
+
+            <CollectionView ItemsSource="{Binding BookmarkItems}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding PublishedAt}" FontSize="12" TextColor="Gray" />
+                            <Label Text="{Binding Description}" FontSize="14" />
+                            <Label Text="{Binding Url}" FontSize="12" TextColor="Blue" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

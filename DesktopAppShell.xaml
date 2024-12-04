@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CyberNewsApp.DesktopAppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:view="clr-namespace:CyberNewsApp.View.Desktop"
+    xmlns:converter="clr-namespace:CyberNewsApp"
+    Shell.FlyoutBehavior="Flyout"
+    TitleColor="White"
+    Title="CyberNewsApp"
+    BackgroundColor="#512BD4">
+
+
+    <Shell.TitleView>
+        <view:DesktopTitleBarView x:Name="DesktopTitleBar" />
+    </Shell.TitleView>
+
+
+    <!-- Shell Pages -->
+    <ShellContent
+        Icon="dotnet_bot.png"
+        Title="NewsSort"
+        ContentTemplate="{DataTemplate view:DesktopMainPage}"
+        Route="DesktopMainPage"/>
+
+    <ShellContent
+        Icon="bookmark.png"
+        Title="Bookmarks"
+        ContentTemplate="{DataTemplate view:DesktopBookmarkView}"
+        Route="DesktopBookmarkView"/>
+</Shell>
