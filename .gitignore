@@ -1,0 +1,88 @@
+﻿# .NET-related files
+bin/
+obj/
+*.user
+*.lock.json
+*.log
+*.cache
+*.pdb
+
+# Visual Studio-specific
+.vs/
+.idea/
+*.suo
+*.userosscache
+*.userprefs
+*.sln.docstates
+*.sqlite
+*.db
+
+# Build files
+app/bin/
+app/obj/
+app/AppPackages/
+AppPackages/
+
+# Android-specific
+.android/
+build/
+*.apk
+*.ap_
+*.dex
+*.so
+*.aab
+*.keystore
+local.properties
+gradle.properties
+
+# iOS/macOS-specific
+build/
+.DS_Store
+*.ipa
+*.app
+*.dSYM
+*.xcodeproj
+*.xcworkspace
+*.xcuserdata/
+*.xccheckout
+*.moved-aside
+DerivedData/
+Carthage/
+Pods/
+Fastlane/
+
+# Windows-specific
+*.appx
+*.appxbundle
+*.appxupload
+*.msix
+*.msixbundle
+*.msixupload
+*.cer
+
+# Node/npm
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Other auto-generated files
+*.log
+*.tlog
+*.rsuser
+*.ide
+*.sdf
+*.sqlite
+*.gitattributes
+*.vscode/
+
+# Secrets
+*.secrets.json
+*.config
+*.key
+
+# MAUI-specific
+platforms/
+**/bin/
+**/obj/
+
