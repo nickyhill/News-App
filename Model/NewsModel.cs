@@ -53,7 +53,7 @@ namespace CyberNewsApp.Model
 
         public async Task FetchNewsAsync(string category, string sortby)
         {
-            string apiUrl = $"https://newsapi.org/v2/everything?q={category}&sortBy={sortby}&apiKey=4f2dfe5f34d4427f949b18afecf1f636";
+            string apiUrl = $"https://newsapi.org/v2/everything?q={category}&sortBy={sortby}&apiKey=";
 
             try
             {
