@@ -13,6 +13,7 @@ using System.Globalization;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using System.ComponentModel;
 
+
 namespace CyberNewsApp.Model
 {
     public class NewsModel
@@ -53,7 +54,11 @@ namespace CyberNewsApp.Model
 
         public async Task FetchNewsAsync(string category, string sortby)
         {
-            string apiUrl = $"https://newsapi.org/v2/everything?q={category}&sortBy={sortby}&apiKey=";
+
+            // Fetch the API key asynchronously
+            var apiKey = await GetApiKeyAsync();
+
+            string apiUrl = $"https://newsapi.org/v2/everything?q={category}&sortBy={sortby}&apiKey={apiKey}";
 
             try
             {
@@ -146,6 +151,21 @@ namespace CyberNewsApp.Model
             }
 
             return formattedDate;
+        }
+
+        private async Task<string> GetApiKeyAsync()
+        {
+            // Open the secrets.json file as a MauiAsset
+            using (var stream = await FileSystem.OpenAppPackageFileAsync("secrets.json"))
+            {
+                using (var reader = new StreamReader(stream))
+                {
+                    var json = await reader.ReadToEndAsync();
+                    using JsonDocument doc = JsonDocument.Parse(json);
+                    var key = doc.RootElement.GetProperty("ApiKey");
+                    return key.GetString();
+                }
+            }
         }
     }
 }
