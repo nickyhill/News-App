@@ -80,6 +80,7 @@ yarn-error.log*
 *.secrets.json
 *.config
 *.key
+secrets.json
 
 # MAUI-specific
 platforms/
