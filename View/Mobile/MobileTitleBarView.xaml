@@ -16,7 +16,7 @@
                 FontSize="18"
                 TextColor="White"
                 VerticalOptions="Center"
-                HorizontalOptions="Center">
+                HorizontalOptions="Start">
         </Label>
         
     </Grid>

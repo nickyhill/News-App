@@ -6,9 +6,11 @@
         {
             InitializeComponent();
 
-    #if ANDROID || IOS
+            UserAppTheme = AppTheme.Light;
+
+#if ANDROID || IOS
             MainPage = mobileAppShell;
-    #else
+#else
             MainPage = desktopAppShell;
     #endif
         }

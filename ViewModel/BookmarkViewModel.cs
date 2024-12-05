@@ -9,8 +9,6 @@ namespace CyberNewsApp.ViewModel
     {
         private readonly BookmarkModel _bookmarkModel;
 
-        
-        
         public bool IsNotBookmarksPage => false;
 
         // Directly bind to the shared collection
@@ -52,6 +50,11 @@ namespace CyberNewsApp.ViewModel
             Empty = _bookmarkModel.IsEmpty();
         }
 
+        public void RemoveBookmark(NewsModel.Article article)
+        {
+            _bookmarkModel.RemoveBookmark(article);
+        }
+
         public BookmarkViewModel(BookmarkModel bookmarkModel)
         {
             _bookmarkModel = bookmarkModel;
@@ -59,8 +62,14 @@ namespace CyberNewsApp.ViewModel
             // Subscribe to changes in the Bookmarked collection
             _bookmarkModel.BookmarkedChanged += (s, e) => UpdateEmptyState();
 
+
+            // Load bookmarks when the Bookmark Page is loaded
+            Task.Run(async () => await _bookmarkModel.LoadBookmarksFromFileAsync());
+
             // Initialize the Empty property
             UpdateEmptyState();
+
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
