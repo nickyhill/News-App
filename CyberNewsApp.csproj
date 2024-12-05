@@ -21,10 +21,10 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>CyberNewsApp</ApplicationTitle>
+		<ApplicationTitle>News Sort</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.cybernewsapp</ApplicationId>
+		<ApplicationId>com.companyname.newssortapp</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -43,8 +43,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+		<MauiSplashScreen Include="Resources\Splash\newssortlogo.svg" Color="#512BD4" BaseSize="128,128" />
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
@@ -111,6 +110,10 @@
 	  <Compile Update="View\Mobile\MobileTitleBarView.xaml.cs">
 	    <DependentUpon>MobileTitleBarView.xaml</DependentUpon>
 	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="Resources\Splash\newssortlogo.svg" Color="#512BD4" BaseSize="128,128" />
 	</ItemGroup>
 
 </Project>

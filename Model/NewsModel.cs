@@ -24,6 +24,8 @@ namespace CyberNewsApp.Model
             public string Description { get; set; } = "[No Description]";
             public string Url { get; set; } = "[No URL]";
             public string PublishedAt { get; set; } = "[No Date]";
+
+            public string Category { get; set; } = "[Category Not Set]";
             public bool IsBookmarked
             {
                 get => _isBookmarked;
