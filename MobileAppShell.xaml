@@ -8,7 +8,7 @@
     Shell.FlyoutBehavior="Flyout"
     TitleColor="White"
     Title="CyberNewsApp"
-    BackgroundColor="#512BD4">
+    BackgroundColor="#3478D4">
 
 
     <Shell.TitleView>

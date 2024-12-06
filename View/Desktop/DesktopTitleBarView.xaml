@@ -9,7 +9,7 @@
             RowDefinitions="Auto,Auto,Auto,Auto,Auto"
             VerticalOptions="Center"
             HorizontalOptions="Fill"
-            BackgroundColor="#512BD4"
+            BackgroundColor="#3478D4"
             Padding="2"
             ColumnSpacing="5"
             RowSpacing="5">
@@ -26,7 +26,7 @@
 
         <BoxView Grid.Column="1" 
                     Grid.Row="0"
-                    BackgroundColor="#512BD4" />
+                    BackgroundColor="#3478D4" />
 
         <!-- Entry (Category) -->
         <Entry Grid.Column="2"

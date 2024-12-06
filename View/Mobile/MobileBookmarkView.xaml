@@ -8,7 +8,7 @@
         <StackLayout Padding="20">
 
             <Label IsVisible="{Binding Empty}"
-                TextColor="#512BD4"
+                TextColor="#3478D4"
                 FontAttributes="Bold"
                 FontSize="Header"
                 VerticalOptions="Center"
@@ -16,7 +16,12 @@
                 Margin="0,50,0,50">There are no bookmarked articles</Label>
 
 
-            <CollectionView ItemsSource="{Binding BookmarkItems}">
+            <CollectionView ItemsSource="{Binding BookmarkItems}" IsGrouped="True">
+                <CollectionView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding Key}" TextColor="#3478D4" FontAttributes="Bold" FontSize="Large" Margin="0,10,0,15"/>
+                    </DataTemplate>
+                </CollectionView.GroupHeaderTemplate>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid ColumnDefinitions="0.90*,0.10*">

@@ -76,7 +76,7 @@ namespace CyberNewsApp.Model
                 }
                 else
                 {
-                   ParseNews(responseBody);
+                   ParseNews(responseBody, category);
                 }
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace CyberNewsApp.Model
             }
         }
 
-        private void ParseNews(string rawData)
+        private void ParseNews(string rawData, string category)
         {
             try
             {
@@ -119,10 +119,11 @@ namespace CyberNewsApp.Model
                         Title = title,
                         Description = description,
                         Url = url,
-                        PublishedAt = publishedAt
+                        PublishedAt = publishedAt,
+                        Category = category
                     };
                     NewsItems.Add(newsItem);
-                    Debug.WriteLine("New Article: " + newsItem);
+                    Debug.WriteLine("New Article: " + newsItem.Category);
                 }
             }
             catch (Exception ex)

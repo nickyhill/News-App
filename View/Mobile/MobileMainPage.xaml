@@ -39,13 +39,25 @@
                 </Picker.Items>
             </Picker>
 
-            <!-- Button (Fetch News) -->
-            <Button
-                Text="Fetch News"
-                BorderColor="White"
-                BorderWidth="2"
-                Command="{Binding FetchNewsCommand}">
-            </Button>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                <!-- Button (Fetch News) -->
+                <Button
+                    Text="Fetch News"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding FetchNewsCommand}">
+                </Button>
+
+                <!-- Button (Clear Main Page) -->
+                <Button
+                    Text="Clear"
+                    BorderColor="White"
+                    BorderWidth="2"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding ClearMainPageCommand}">
+                </Button>
+            </StackLayout>
 
             <Label IsVisible="{Binding Loading}"
                     FontAttributes="Bold"

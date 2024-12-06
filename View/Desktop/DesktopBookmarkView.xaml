@@ -15,7 +15,7 @@
                >Loading Bookmarked News...</Label>
 
             <Label IsVisible="{Binding Empty}"
-               TextColor="#512BD4"
+               TextColor="#3478D4"
                FontSize="Header"
                VerticalOptions="Center"
                HorizontalOptions="Center"

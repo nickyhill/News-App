@@ -8,7 +8,7 @@
     <Grid 
         VerticalOptions="Center"
         HorizontalOptions="Fill"
-        BackgroundColor="#512BD4"
+        BackgroundColor="#3478D4"
         Padding="2">
 
         <Label 

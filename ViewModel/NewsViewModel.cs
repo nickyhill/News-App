@@ -13,6 +13,8 @@ namespace CyberNewsApp.ViewModel
         public ICommand FetchNewsCommand { get; }
         public ICommand ToggleBookmarkCommand { get; }
 
+        public ICommand ClearMainPageCommand {  get; }
+
         private readonly NewsModel _news;
         private readonly BookmarkModel _bookmark;
         public bool IsNotBookmarksPage => true;
@@ -74,6 +76,7 @@ namespace CyberNewsApp.ViewModel
             _bookmark = book;
             FetchNewsCommand = new Command(async () => await FetchNewsAsync());
             ToggleBookmarkCommand = new Command<NewsModel.Article>(ToggleBookmark);
+            ClearMainPageCommand = new Command(ClearMainPage);
         }
 
         public async Task FetchNewsAsync()
@@ -88,6 +91,14 @@ namespace CyberNewsApp.ViewModel
                 NewsItems.Add(item);
             }
             Loading = false;
+        }
+
+        public void ClearMainPage()
+        {
+            NewsItems.Clear();
+            Category = string.Empty;
+            SelectedSortBy = string.Empty;
+
         }
 
         private void ToggleBookmark(NewsModel.Article article)

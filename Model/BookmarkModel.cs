@@ -21,7 +21,7 @@ namespace CyberNewsApp.Model
         {
             if (!Bookmarked.Contains(article))
             {
-                Bookmarked.Add(article);
+                Bookmarked.Insert(0,article);
                 Task.Run(async () => await SaveBookmarksToFileAsync(Bookmarked));
             }
             BookmarkedChanged?.Invoke(this, EventArgs.Empty);
