@@ -424,4 +424,79 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+    <!-- Border Style -->
+    <Style x:Key="BorderCardStyle" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="Padding" Value="0,5" />
+        <Setter Property="Margin"  Value="0,5"/>
+        <Setter Property="Stroke" Value="Gray" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+    </Style>
+
+    <!-- Border Shadow Style -->
+    <Style x:Key="BorderShadowCardStyle" TargetType="Border">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Padding" Value="10,10,10,10" />
+        <Setter Property="Margin" Value="10,10,10,10"/>
+        <Setter Property="Stroke" Value="Transparent" />
+        <Setter Property="StrokeThickness" Value="1" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+        <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+        <Setter Property="Shadow">
+            <Setter.Value>
+                <Shadow Brush="Gray" Opacity="0.9" Offset="10,10" Radius="20" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!-- Card Style -->
+    <Style x:Key="CardStyle" TargetType="Grid">
+        <Setter Property="BackgroundColor" Value="White" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+    </Style>
+
+    <!-- Title Style -->
+    <Style x:Key="TitleStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="TextColor" Value="Black" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+    </Style>
+
+    <!-- Date Style -->
+    <Style x:Key="DateStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextColor" Value="Gray" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+
+    <!-- Description Style -->
+    <Style x:Key="DescriptionStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="TextColor" Value="#333333" />
+        <Setter Property="Margin" Value="0,0,0,5" />
+    </Style>
+
+    <!-- URL Style -->
+    <Style x:Key="UrlStyle" TargetType="Label">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="TextColor" Value="Blue" />
+        <Setter Property="TextDecorations" Value="Underline" />
+    </Style>
+    
+    <!-- Bookmark Header -->
+
+    <Style x:Key="BookmarkHeader" TargetType="Label">
+        <Setter Property="TextColor" Value="#3478D4"/>
+        <Setter Property="FontAttributes" Value="Bold"/>
+        <Setter Property="FontSize" Value="Large"/>
+        <Setter Property="TextDecorations" Value="Underline" />
+        <Setter Property="Margin" Value="20,15,20,0"/>
+    </Style>
+
 </ResourceDictionary>

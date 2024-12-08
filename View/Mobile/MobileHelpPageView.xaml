@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CyberNewsApp.View.Mobile.MobileHelpPageView"
+             Title="Help">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            <!-- FAQ Section -->
+            <Label Text="Frequently Asked Questions" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   Margin="0,10,0,0" />
+            <Label Text="1. How do I bookmark an article?" 
+                   FontAttributes="Bold" />
+            <Label Text="To bookmark an article, click the bookmark icon next to the article." />
+
+            <Label Text="2. How do I fetch news?" 
+                   FontAttributes="Bold" />
+            <Label Text="Use the category field to enter a topic and select a sorting option. Then click fetch news" />
+
+            <Label Text="3. How do I delete a bookmark?" 
+                   FontAttributes="Bold" />
+            <Label Text="Tap the red 'X' icon next to a bookmarked article to remove it." />
+
+            <!-- Support Section -->
+            <Label Text="Support" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   Margin="0,20,0,0" />
+            <Label Text="If you have further questions or need assistance, contact us at:" />
+            <Label Text="support@newssortapp.com" 
+                   TextColor="Blue"
+                   FontAttributes="Italic" 
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </ScrollView>
+    
+    
+</ContentPage>

@@ -18,8 +18,8 @@
 
     <!-- Shell Pages -->
     <ShellContent
-        Icon="dotnet_bot.png"
-        Title="NewsSort"
+        Icon="newsarticle.png"
+        Title="News Sort"
         ContentTemplate="{DataTemplate view:MobileMainPage}"
         Route="MobileMainPage"/>
 
@@ -28,4 +28,10 @@
         Title="Bookmarks"
         ContentTemplate="{DataTemplate view:MobileBookmarkView}"
         Route="MobileBookmarkView"/>
+
+    <ShellContent
+        Icon="questionmark.png"
+        Title="Help"
+        ContentTemplate="{DataTemplate view:MobileHelpPageView}"
+        Route="MobileHelpPageView"/>
 </Shell>

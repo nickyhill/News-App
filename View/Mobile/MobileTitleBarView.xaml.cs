@@ -13,14 +13,19 @@ public partial class MobileTitleBarView : ContentView
     {
         switch (currentPageTitle)
         {
-            case "NewsSort":
+            case "News Sort":
                 BindingContext = newsViewModel;
-                mobileTitleLabel.Text = "NewsSort"; // MainPage title
+                mobileTitleLabel.Text = "News Sort"; // MainPage title
                 break;
 
             case "Bookmarks":
                 BindingContext = bookmarkViewModel;
                 mobileTitleLabel.Text = "Bookmarks"; // BookmarkPage title
+                break;
+
+            case "Help":
+                BindingContext = bookmarkViewModel;
+                mobileTitleLabel.Text = "Help and Support"; // BookmarkPage title
                 break;
 
             default:
