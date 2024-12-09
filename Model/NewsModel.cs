@@ -50,9 +50,9 @@ namespace CyberNewsApp.Model
 
 
 
-        public List<Article> NewsItems { get; private set; } = new List<Article>();
+        public List<Article> NewsItems { get; set; } = new List<Article>();
 
-        public async Task FetchNewsAsync(string category, string sortby)
+        public async Task<List<Article>> FetchNewsAsync(string category, string sortby)
         {
 
             // Fetch the API key asynchronously
@@ -69,30 +69,31 @@ namespace CyberNewsApp.Model
                 string responseBody = await response.Content.ReadAsStringAsync();
                 Debug.WriteLine(responseBody);
 
-               
+
                 if (!response.IsSuccessStatusCode)
                 {
                     throw new HttpRequestException($"Request failed with status code {response.Headers} {response.StatusCode} {response.Content}");
                 }
                 else
                 {
-                   ParseNews(responseBody, category);
+                    return ParseNews(responseBody, category);
                 }
             }
             catch (Exception ex)
-            {
+            { 
                 Console.WriteLine($"Error fetching news: {ex.Message}");
+                throw new HttpRequestException($"Request failed {ex.Message}");
             }
         }
 
-        private void ParseNews(string rawData, string category)
+        private List<Article> ParseNews(string rawData, string category)
         {
             try
             {
                 using JsonDocument doc = JsonDocument.Parse(rawData);
                 var articles = doc.RootElement.GetProperty("articles");
 
-                NewsItems.Clear();
+                List<Article> TempNewsItems = new List<Article>();
 
                 foreach (var article in articles.EnumerateArray())
                 {
@@ -122,9 +123,10 @@ namespace CyberNewsApp.Model
                         PublishedAt = publishedAt,
                         Category = category
                     };
-                    NewsItems.Add(newsItem);
+                    TempNewsItems.Add(newsItem);
                     Debug.WriteLine("New Article: " + newsItem.Category);
                 }
+                return TempNewsItems;
             }
             catch (Exception ex)
             {

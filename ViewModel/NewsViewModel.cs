@@ -1,9 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CyberNewsApp.Model;
+using CyberNewsApp.Services;
 
 namespace CyberNewsApp.ViewModel
 {
@@ -14,6 +16,8 @@ namespace CyberNewsApp.ViewModel
         public ICommand ToggleBookmarkCommand { get; }
 
         public ICommand ClearMainPageCommand {  get; }
+
+        private readonly CombinedCacheService _cacheService;
 
         private readonly NewsModel _news;
         private readonly BookmarkModel _bookmark;
@@ -113,17 +117,21 @@ namespace CyberNewsApp.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        public NewsViewModel(NewsModel news, BookmarkModel book)
+        public NewsViewModel(NewsModel news, BookmarkModel book, CombinedCacheService cacheService)
         {
+            _cacheService = cacheService;
             _news = news;
             _bookmark = book;
             FetchNewsCommand = new Command<string>(async (searchText) => await FetchNewsAsync(searchText));
             ToggleBookmarkCommand = new Command<NewsModel.Article>(ToggleBookmark);
             ClearMainPageCommand = new Command(ClearMainPage);
+            _cacheService = cacheService;
         }
 
         public async Task FetchNewsAsync(string searchText)  
         {
+            var key = $"{searchText}-date";
+            var fileName = $"{searchText}-date.json";
 
             // Ensure that the user entered a category
             if (string.IsNullOrWhiteSpace(searchText))
@@ -132,19 +140,33 @@ namespace CyberNewsApp.ViewModel
                 return;
             }
 
+
+
+            _news.NewsItems = await _news.FetchNewsAsync(searchText, "Date");
+
+            //await _cacheService.GetAsync<List<NewsModel.Article>>(
+            //    key,
+            //    fileName,
+            //    async () =>
+            //    {
+            //        await _news.FetchNewsAsync(searchText, "Date");
+            //        return _news.NewsItems;
+            //    },
+            //    TimeSpan.FromMinutes(30)
+            //    ) ?? new List<NewsModel.Article>();
+
             Loading = true;
             ShowSearchBar = false;
             ShowClearButton = true;
             ShowArticles = true;
             NewsItems.Clear();
-            await _news.FetchNewsAsync(searchText, "Date");
-
             
             foreach (var item in _news.NewsItems)
             {
                 NewsItems.Add(item);
             }
             Loading = false;
+
         }
 
         public void ClearMainPage()

@@ -3,6 +3,7 @@ using CyberNewsApp.ViewModel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using CyberNewsApp.Services;
 
 namespace CyberNewsApp
 {
@@ -21,6 +22,7 @@ namespace CyberNewsApp
 
 
             // Register dependencies
+            // MVVM 
             builder.Services.AddSingleton<NewsModel>();
             builder.Services.AddSingleton<NewsViewModel>();
             builder.Services.AddSingleton<View.Desktop.DesktopMainPage>();
@@ -32,6 +34,12 @@ namespace CyberNewsApp
             builder.Services.AddSingleton<View.Desktop.DesktopTitleBarView>();
             builder.Services.AddSingleton<View.Mobile.MobileTitleBarView>();
 
+            // Cache Services
+            builder.Services.AddSingleton<CacheService>();
+            builder.Services.AddSingleton<FileService>();
+            builder.Services.AddSingleton<CombinedCacheService>();
+
+            // Shells
             builder.Services.AddSingleton<DesktopAppShell>();
             builder.Services.AddSingleton<MobileAppShell>();
 
