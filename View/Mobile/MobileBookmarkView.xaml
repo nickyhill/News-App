@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CyberNewsApp.ViewModel"
              x:Class="CyberNewsApp.View.Mobile.MobileBookmarkView"
+             BackgroundColor="#3478D4"
              Title="Bookmarks">
     <StackLayout>
 
         <Label IsVisible="{Binding Empty}"
-                TextColor="#3478D4"
+                TextColor="White"
                 FontAttributes="Bold"
                 FontSize="Header"
                 VerticalOptions="Center"

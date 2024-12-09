@@ -21,7 +21,50 @@ namespace CyberNewsApp.ViewModel
 
         private string _category;
         private string _selectedSortBy;
-        private bool _loading;
+        private bool _showSearchBar = true;
+        private bool _loading = false;
+        private bool _showArticles = false;
+        private bool _showClearButton = false;
+
+        public bool ShowSearchBar
+        {
+            get => _showSearchBar;
+            set
+            {
+                if (_showSearchBar != value)
+                {
+                    _showSearchBar = value;
+                    OnPropertyChanged(nameof(ShowSearchBar));
+                }
+            }
+        }
+
+        public bool ShowArticles
+        {
+            get => _showArticles;
+            set
+            {
+                if (_showArticles != value)
+                {
+                    _showArticles = value;
+                    OnPropertyChanged(nameof(ShowArticles));
+                }
+            }
+        }
+
+        public bool ShowClearButton
+        {
+            get => _showClearButton;
+            set
+            {
+                if (_showClearButton != value)
+                {
+                    _showClearButton = value;
+                    OnPropertyChanged(nameof(ShowClearButton));
+                }
+            }
+        }
+
 
         public bool Loading
         {
@@ -74,16 +117,27 @@ namespace CyberNewsApp.ViewModel
         {
             _news = news;
             _bookmark = book;
-            FetchNewsCommand = new Command(async () => await FetchNewsAsync());
+            FetchNewsCommand = new Command<string>(async (searchText) => await FetchNewsAsync(searchText));
             ToggleBookmarkCommand = new Command<NewsModel.Article>(ToggleBookmark);
             ClearMainPageCommand = new Command(ClearMainPage);
         }
 
-        public async Task FetchNewsAsync()
+        public async Task FetchNewsAsync(string searchText)  
         {
+
+            // Ensure that the user entered a category
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                // Optionally, provide feedback to the user (e.g., show a message or return early)
+                return;
+            }
+
             Loading = true;
+            ShowSearchBar = false;
+            ShowClearButton = true;
+            ShowArticles = true;
             NewsItems.Clear();
-            await _news.FetchNewsAsync(Category, SelectedSortBy);
+            await _news.FetchNewsAsync(searchText, "Date");
 
             
             foreach (var item in _news.NewsItems)
@@ -96,9 +150,12 @@ namespace CyberNewsApp.ViewModel
         public void ClearMainPage()
         {
             NewsItems.Clear();
+            ShowSearchBar = true;
+            ShowArticles = false;
+            Loading = false;
+            ShowClearButton = false;
             Category = string.Empty;
             SelectedSortBy = string.Empty;
-
         }
 
         private void ToggleBookmark(NewsModel.Article article)

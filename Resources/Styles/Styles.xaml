@@ -492,11 +492,26 @@
     <!-- Bookmark Header -->
 
     <Style x:Key="BookmarkHeader" TargetType="Label">
-        <Setter Property="TextColor" Value="#3478D4"/>
+        <Setter Property="TextColor" Value="White"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="FontSize" Value="Large"/>
         <Setter Property="TextDecorations" Value="Underline" />
         <Setter Property="Margin" Value="20,15,20,0"/>
+    </Style>
+    
+    <!-- MainPage Search Bar -->
+
+    <Style x:Key="MainSearchBar" TargetType="SearchBar">
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="PlaceholderColor" Value="White" />
+        <Setter Property="CancelButtonColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="MinimumHeightRequest" Value="44"/>
+        <Setter Property="MinimumWidthRequest" Value="44"/>
+        <Setter Property="IsSpellCheckEnabled" Value="True"/>
+        <Setter Property="IsTextPredictionEnabled"  Value="True"/>
     </Style>
 
 </ResourceDictionary>

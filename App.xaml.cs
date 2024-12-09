@@ -12,7 +12,7 @@
             MainPage = mobileAppShell;
 #else
             MainPage = desktopAppShell;
-    #endif
+#endif
         }
     }
 }
