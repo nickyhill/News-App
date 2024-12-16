@@ -26,6 +26,8 @@ namespace CyberNewsApp.Model
             public string Url { get; set; } = "[No URL]";
             public string PublishedAt { get; set; } = "[No Date]";
 
+            public string UrlImage { get; set; } = "[No UrlImage]";
+
             public string Category { get; set; } = "[Category Not Set]";
             public bool IsBookmarked
             {
@@ -67,7 +69,6 @@ namespace CyberNewsApp.Model
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                 var response = await client.GetAsync(apiUrl);
                 string responseBody = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine(responseBody);
 
 
                 if (!response.IsSuccessStatusCode)
@@ -102,13 +103,14 @@ namespace CyberNewsApp.Model
                     var description = article.GetProperty("description").GetString();
                     var url = article.GetProperty("url").GetString();
                     var publishedAt = article.GetProperty("publishedAt").GetString();
+                    var urlToImage = article.GetProperty("urlToImage").GetString();
 
-                    if (title == "[Removed]" || description == "[Removed]" || url == "[Removed]" || publishedAt == "[Removed]")
+                    if (title == "[Removed]" || description == "[Removed]" || url == "[Removed]" || publishedAt == "[Removed]" || urlToImage == "[Removed]")
                     {
                         continue;
                     }
 
-                    if (title == null || description == null || url == null || publishedAt == null)
+                    if (title == null || description == null || url == null || publishedAt == null || urlToImage == null)
                     {
                         continue;
                     }
@@ -121,6 +123,7 @@ namespace CyberNewsApp.Model
                         Description = description,
                         Url = url,
                         PublishedAt = publishedAt,
+                        UrlImage = urlToImage,
                         Category = category
                     };
                     TempNewsItems.Add(newsItem);

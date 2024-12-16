@@ -16,6 +16,20 @@ namespace CyberNewsApp.ViewModel
 
         private bool _loading;
         private bool _empty;
+        private bool _showClearButton = false;
+
+        public bool ShowClearButton
+        {
+            get => _showClearButton;
+            set
+            {
+                if (_showClearButton != value)
+                {
+                    _showClearButton = value;
+                    OnPropertyChanged(nameof(Loading));
+                }
+            }
+        }
 
         public bool Loading
         {

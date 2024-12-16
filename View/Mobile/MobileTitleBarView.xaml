@@ -18,6 +18,24 @@
                 VerticalOptions="Center"
                 HorizontalOptions="Start">
         </Label>
-        
+
+        <!-- Clear Button -->
+        <Button
+            Text="Clear"
+            Command="{Binding ClearMainPageCommand}"
+            IsVisible="{Binding ShowClearButton}"
+            VerticalOptions="Center"
+            HorizontalOptions="End"
+            BackgroundColor="Transparent"
+            TextColor="White"
+            FontAttributes="Bold"
+            BorderColor="White"
+            BorderWidth="1"
+            CornerRadius="10"
+            Padding="5"
+            Margin="10,0"
+            WidthRequest="75"/>
+
+
     </Grid>
 </ContentView>

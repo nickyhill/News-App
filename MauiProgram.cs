@@ -35,9 +35,8 @@ namespace CyberNewsApp
             builder.Services.AddSingleton<View.Mobile.MobileTitleBarView>();
 
             // Cache Services
-            builder.Services.AddSingleton<CacheService>();
-            builder.Services.AddSingleton<FileService>();
-            builder.Services.AddSingleton<CombinedCacheService>();
+            builder.Services.AddMemoryCache();
+            builder.Services.AddSingleton<DatabaseService>();
 
             // Shells
             builder.Services.AddSingleton<DesktopAppShell>();

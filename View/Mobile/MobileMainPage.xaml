@@ -45,9 +45,16 @@
                 <DataTemplate>
                     <Border Style="{StaticResource BorderShadowCardStyle}">
                         <Border Style="{StaticResource BorderCardStyle}">
-                            <Grid ColumnDefinitions="0.90*,0.10*" Style="{StaticResource CardStyle}">
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="0.90*,0.10*" Style="{StaticResource CardStyle}">
+                                <Image Source="{Binding UrlImage}" 
+                                   Aspect="AspectFill" 
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   VerticalOptions="Center"/>
                                 <StackLayout Padding="10"
-                                             Grid.Column="0">
+                                             Grid.Column="0"
+                                             Grid.Row="1">
                                     <Label Text="{Binding Title}" 
                                                Style="{StaticResource TitleStyle}" />
                                     <Label Text="{Binding PublishedAt}" 
@@ -71,10 +78,11 @@
                                         IsOpaque="False"
                                         HorizontalOptions="End"
                                         VerticalOptions="Center"
-                                        WidthRequest="24"  
-                                        HeightRequest="24"
+                                        WidthRequest="30"  
+                                        HeightRequest="30"
                                         Grid.Column="1"
-                                        Margin="10,0"
+                                        Grid.Row="1"
+                                        Margin="15,0"
                                         BackgroundColor="Transparent">
 
                                     <ImageButton.Triggers>
@@ -95,21 +103,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <!-- Clear Button -->
-            <Button 
-            Text="Clear"
-            Command="{Binding ClearMainPageCommand}"
-            IsVisible="{Binding ShowClearButton}"
-            BorderColor="Gray"
-            BorderWidth="2"
-            BackgroundColor="#FFFFFF"
-            TextColor="#3478D4"
-            FontAttributes="Bold"
-            WidthRequest="75"
-            HorizontalOptions="Start"
-            VerticalOptions="Start"
-            Margin="10"
-            Padding="5" />
+           
         </Grid>
     
 </ContentPage>

@@ -11,9 +11,9 @@
                 TextColor="White"
                 FontAttributes="Bold"
                 FontSize="Header"
-                VerticalOptions="Center"
-                HorizontalOptions="Center"
-                Margin="0,50,0,50">There are no bookmarked articles</Label>
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand"
+                Margin="0,250,10,50">There are no bookmarked articles</Label>
 
 
         <CollectionView ItemsSource="{Binding BookmarkItems}" 
@@ -29,9 +29,16 @@
                 <DataTemplate>
                     <Border Style="{StaticResource BorderShadowCardStyle}">
                         <Border Style="{StaticResource BorderCardStyle}">
-                        <Grid ColumnDefinitions="0.90*,0.10*" Style="{StaticResource CardStyle}">
-                            <StackLayout Padding="10"
-                                         Grid.Column="0">
+                            <Grid RowDefinitions="auto, auto" ColumnDefinitions="0.90*,0.10*" Style="{StaticResource CardStyle}">
+                                <Image Source="{Binding UrlImage}" 
+                                   Aspect="AspectFill" 
+                                   Grid.Row="0"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="2"
+                                   VerticalOptions="Center"/>
+                                <StackLayout Padding="10"
+                                         Grid.Column="0"
+                                         Grid.Row="1">
                                 <Label Text="{Binding Title}" 
                                            Style="{StaticResource TitleStyle}" />
                                 <Label Text="{Binding PublishedAt}" 
@@ -50,10 +57,11 @@
                                         Source="delete_icon.png"
                                         HorizontalOptions="End"
                                         VerticalOptions="Center"
-                                        WidthRequest="24"  
-                                        HeightRequest="24"
+                                        WidthRequest="30"  
+                                        HeightRequest="30"
                                         Grid.Column="1"
-                                        Margin="10,0"
+                                        Grid.Row="1"
+                                        Margin="15,0"
                                         BackgroundColor="Transparent"
                                         Clicked="RemoveBookmark">
                             </ImageButton>
